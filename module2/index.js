@@ -40,7 +40,7 @@ app.post("/tasks", (req, res) => {
     const obj = JSON.parse(data);
     const newVal = req.body;
 
-    if (newVal?.title && newVal?.description && newVal?.completed != undefined) {
+    if (newVal?.title && newVal?.description && newVal?.completed != undefined && typeof(newVal.completed) == "boolean") {
       newVal.id = obj.length + 1;
       obj.push(newVal);
 
@@ -59,6 +59,43 @@ app.post("/tasks", (req, res) => {
   });
 });
 
+
+// Update and Existing Task
+app.put("/tasks/:id", (req, res) => {
+  fs.readFile("tasks.json", { encoding: "utf-8" }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.send("Request could not be executed!");
+    }
+    const obj = JSON.parse(data);
+    const newVal = req.body;
+
+    if (newVal?.title && newVal?.description && newVal?.completed != undefined && typeof(newVal.completed) == "boolean") {
+      
+      if(req.params.id > obj.length || req.params.id < 0) {
+        res.send("Invalid Id")
+      }
+      newVal.id = req.params.id;
+      obj.push(newVal);
+
+      fs.writeFile("tasks.json", JSON.stringify(obj), "utf8", (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log("File has been written successfully.");
+        res.send("Task added successfully");
+      });
+
+    } else {
+        res.send("information is not complete")
+    }
+  });
+})
+
+app.delete("/tasks/:id", (req, res) => {
+  
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
