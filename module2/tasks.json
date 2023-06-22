@@ -1,50 +1,20 @@
 [
     {
-        "title": "some task",
+        "title": "new task",
         "description": "sample description",
-        "completed": false,
-        "id": 1
+        "completed": true,
+        "id": "f74663c9-d4e3-4324-bc7e-d1d162de8463"
     },
     {
-        "title": "some task",
+        "title": "new task",
         "description": "sample description",
-        "completed": false,
-        "id": 2
+        "completed": true,
+        "id": "8300903c-ac58-4488-9659-c00f5e6e9510"
     },
     {
-        "title": "some task",
+        "title": "new task",
         "description": "sample description",
-        "completed": false,
-        "id": 3
-    },
-    {
-        "title": "some task",
-        "description": "sample description",
-        "completed": false,
-        "id": 4
-    },
-    {
-        "title": "some another task",
-        "description": "sample description",
-        "completed": false,
-        "id": 5
-    },
-    {
-        "title": "some another task",
-        "description": "sample description",
-        "completed": false,
-        "id": 6
-    },
-    {
-        "title": "some another task",
-        "description": "sample description",
-        "completed": false,
-        "id": 7
-    },
-    {
-        "title": "some another task",
-        "description": "sample description",
-        "completed": false,
-        "id": 8
+        "completed": true,
+        "id": "e32237d7-3fc2-4b64-a592-3921df18da12"
     }
 ]
