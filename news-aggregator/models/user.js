@@ -36,6 +36,11 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+
+  categories: {
+    type: Array,
+    default: [],
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);
