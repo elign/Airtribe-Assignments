@@ -8,6 +8,7 @@ const registerNewUser = async (req, res) => {
     email: req.body.email,
     role: req.body.role,
     password: bcrypt.hashSync(req.body.password, 8),
+    categories: [],
   });
 
   user

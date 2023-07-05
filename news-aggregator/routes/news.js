@@ -9,7 +9,7 @@ const {
 } = require("../controllers/news");
 
 // Middleware to verify Token
-const verifyToken = require("../middleware/authJWT");
+const { verifyToken } = require("../middleware/authJWT");
 
 const { registerNewUser, loginUser } = require("../controllers/auth");
 
