@@ -28,6 +28,6 @@ router.route("/news/:id/read").post(markNewsAsRead);
 
 router.route("/news/:id/favorite").post(markNewsAsFavorite);
 
-router.route("/news/search/:keyword").get(findArticlesBasedOnKeyword);
+router.route("/news/search/:keyword").get(verifyToken, findArticlesBasedOnKeyword);
 
 module.exports = router;

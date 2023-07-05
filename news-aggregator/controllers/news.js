@@ -107,7 +107,17 @@ const markNewsAsFavorite = async (req, res) => {
 };
 
 const findArticlesBasedOnKeyword = async (req, res) => {
-  res.status(201).send("Working on It!");
+  const url = `https://newsapi.org/v2/top-headlines?q=${req.params.keyword}&apiKey=8ba3722b85da48ba9c22688d7035ce78
+  `;
+  return fetchUrl(url)
+    .then((data) => {
+      // Process the fetched data
+      res.status(200).json({ data });
+    })
+    .catch((error) => {
+      // Handle any errors that occurred during the fetch request
+      res.status(500).json({ error });
+    });
 };
 
 module.exports = {
