@@ -4,3 +4,4 @@
 ## Tasks
 
 ### Module 2 : Task Manager API
+### Module 3 : News Aggregator
