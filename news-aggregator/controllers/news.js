@@ -1,8 +1,8 @@
 const path = require("path");
 const fs = require("fs");
-const { json } = require("express");
+// const { json } = require("express");
 const User = require("../models/user");
-const {fetchUserCategories} = require("../helpers/herpers")
+const { fetchUserCategories, fetchUrl } = require("../helpers/herpers");
 
 const getNewsPreferences = async (req, res) => {
   if (!req.user && req.message === null) {
@@ -68,27 +68,46 @@ const getNewsBasedOnUserPreference = async (req, res) => {
   try {
     const userId = req.user.id;
     const categories = await fetchUserCategories(userId);
-    res.status(200).json({ categories });
-    // Handle the categories array as needed
+    const result = [];
+    const promises = categories.map(function (category) {
+      const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=8ba3722b85da48ba9c22688d7035ce78`;
+      return fetchUrl(url)
+        .then((data) => {
+          // Process the fetched data
+          result.push(...data.articles);
+        })
+        .catch((error) => {
+          // Handle any errors that occurred during the fetch request
+          console.error(error);
+          throw error;
+        });
+    });
+
+    Promise.all(promises)
+      .then(() => {
+        res.status(200).json(result);
+      })
+      .catch((error) => {
+        res.status(500).json(error);
+      });
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: error.message });
-    // Handle the error
   }
 };
 
 //----------- Optional -------------//
 
 const markNewsAsRead = async (req, res) => {
-  res.status(201).send("Working on It!")
+  res.status(201).send("Working on It!");
 };
 
 const markNewsAsFavorite = async (req, res) => {
-  res.status(201).send("Working on It!")
+  res.status(201).send("Working on It!");
 };
 
 const findArticlesBasedOnKeyword = async (req, res) => {
-  res.status(201).send("Working on It!")
+  res.status(201).send("Working on It!");
 };
 
 module.exports = {

@@ -22,7 +22,7 @@ router
   .get(verifyToken, getNewsPreferences)
   .put(verifyToken, updateNewsPreferences);
 
-router.route("/news").get(getNewsBasedOnUserPreference);
+router.route("/news").get(verifyToken, getNewsBasedOnUserPreference);
 
 router.route("/news/:id/read").post(markNewsAsRead);
 
