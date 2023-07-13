@@ -28,3 +28,5 @@ try {
 app.listen(port, host, () =>
   console.log(`Server started! listening on port ${port}!`)
 );
+
+module.exports = server;

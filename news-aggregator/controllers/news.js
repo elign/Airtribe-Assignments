@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 // const { json } = require("express");
 const User = require("../models/user");
-const { fetchUserCategories, fetchUrl } = require("../helpers/herpers");
+const { fetchUserCategories, fetchUrl } = require("../helpers/helpers");
 
 const getNewsPreferences = async (req, res) => {
   if (!req.user && req.message === null) {
