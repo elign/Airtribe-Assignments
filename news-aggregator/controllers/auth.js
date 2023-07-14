@@ -19,7 +19,7 @@ const registerNewUser = async (req, res) => {
       });
     })
     .catch((err) => {
-      res.status(400).send({
+      res.status(500).send({
         message: err,
       });
     });
@@ -48,7 +48,7 @@ const loginUser = async (req, res) => {
       );
 
       if (!passwordIsValid) {
-        return res.send(404).send({
+        return res.status(401).send({
           accessToken: null,
           message: "Invalid Password",
         });
