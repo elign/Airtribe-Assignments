@@ -20,21 +20,6 @@ const Theatre = sequelize.define("theatre", {
       key: "city_id",
     },
   },
-
-  // movie_id: {
-  //   type: DataTypes.INTEGER,
-  //   allowNull: false,
-  //   references: {
-  //     model: Movie,
-  //     key: "movie_id",
-  //   },
-  // },
 });
-
-Theatre.hasOne(City, {
-  foreignKey: "city_id",
-  as: "city",
-});
-
 
 module.exports = Theatre;
