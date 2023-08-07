@@ -3,6 +3,6 @@ const router = require('express').Router();
 
 router.get('/cities', getListOfAllCities);
 router.get('/:city/theatres', getAllTheatresInTheCity);
-router.get('/:city/theatres/:theatre/shows/:date', getAllShowsOnTheGivenDate);
+router.get('/theatres/:theatre/:date', getAllShowsOnTheGivenDate);
 
 module.exports = router;

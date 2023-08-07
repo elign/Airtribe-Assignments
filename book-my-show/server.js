@@ -130,34 +130,37 @@ app.use(bodyParser.json());
     const sampleShows = [];
     const numberOfShows = 100;
     const showTimes = [
-      "2023-08-03 9:00 AM",
-      "2023-08-03 12:00 PM",
-      "2023-08-03 3:00 PM",
-
-      "2023-08-04 9:30 AM",
-      "2023-08-04 1:00 PM",
-      "2023-08-04 4:30 PM",
-
-      "2023-08-05 10:00 AM",
-      "2023-08-05 1:30 PM",
-      "2023-08-05 5:00 PM",
-
-      "2023-08-06 11:00 AM",
-      "2023-08-06 2:00 PM",
-      "2023-08-06 6:00 PM",
-
-      "2023-08-07 10:30 AM",
-      "2023-08-07 2:30 PM",
-      "2023-08-07 5:30 PM",
-
-      "2023-08-08 11:30 AM",
-      "2023-08-08 3:30 PM",
-      "2023-08-08 6:30 PM",
-
-      "2023-08-09 10:00 AM",
-      "2023-08-09 2:00 PM",
-      "2023-08-09 5:00 PM",
+      "09:00:00",
+      "12:00:00",
+      "15:00:00",
+      "09:30:00",
+      "13:00:00",
+      "16:30:00",
+      "10:00:00",
+      "13:30:00",
+      "17:00:00",
+      "11:00:00",
+      "14:00:00",
+      "18:00:00",
+      "10:30:00",
+      "14:30:00",
+      "17:30:00",
+      "11:30:00",
+      "15:30:00",
+      "18:30:00",
+      "10:00:00",
+      "14:00:00",
+      "17:00:00",
     ];
+    const currentDate = new Date();
+    const showDate = [];
+
+    for (let i = 0; i < 7; i++) {
+      const nextDate = new Date(currentDate);
+      nextDate.setDate(currentDate.getDate() + i);
+      const formattedDate = nextDate.toLocaleDateString("en-US");
+      showDate.push(formattedDate);
+    }
 
     for (let i = 0; i < numberOfShows; i++) {
       const randomMovie = movies[Math.floor(Math.random() * movies.length)];
@@ -169,11 +172,14 @@ app.use(bodyParser.json());
         languages[Math.floor(Math.random() * languages.length)];
       const randomShowFeature =
         showFeatures[Math.floor(Math.random() * showFeatures.length)];
+      const randomShowDate =
+        showDate[Math.floor(Math.random() * showDate.length)];
 
       sampleShows.push({
         movie_id: randomMovie.movie_id,
         theatre_id: randomTheatre.theatre_id,
         show_time: randomShowTime,
+        show_date: randomShowDate,
         show_language_id: randomLanguage.language_id,
         show_feature_id: randomShowFeature.feature_id,
       });

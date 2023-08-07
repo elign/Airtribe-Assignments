@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, ForeignKeyConstraintError } = require("sequelize");
 const sequelize = require("../dbconfig");
 const Theatre = require("./TheatreModel");
 const Movie = require("./MovieModel");
@@ -27,8 +27,12 @@ const Show = sequelize.define("Show", {
       key: "theatre_id",
     },
   },
+  show_date: {
+    type: DataTypes.DATEONLY,
+    allowNull: false,
+  },
   show_time: {
-    type: DataTypes.DATE,
+    type: DataTypes.TIME,
     allowNull: false,
   },
   show_language_id: {
@@ -51,7 +55,11 @@ const Show = sequelize.define("Show", {
 
 // //Associations between Show and other models
 
-// Show.belongsTo(Movie, {
+Show.hasOne(Movie, {
+  foreignKey : "movie_id",
+  as: "movie",
+});
+  //Show.belongsTo(Movie, {
 //   foreignKey: "movie_id",
 //   as: "movie",
 // });

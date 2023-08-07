@@ -1,7 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../dbconfig");
 const Language = require("./MovieLanguageModel");
-const Theatre = require("./TheatreModel");
 
 const Movie = sequelize.define("Movie", {
   movie_id: {
