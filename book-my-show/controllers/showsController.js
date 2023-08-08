@@ -45,28 +45,6 @@ const getAllShowsOnTheGivenDate = async (req, res) => {
           [Op.eq]: desiredDate,
         },
       },
-      include: [
-        {
-          model: Movie,
-          attributes: ["movie_name"],
-        },
-        {
-          model: Theatre,
-          attributes: ["theatre_name"],
-        },
-        {
-          model: City,
-          attributes: ["city_name"],
-        },
-        {
-          model: MovieLanguage,
-          attributes: ["language"],
-        },
-        {
-          model: ShowFeature,
-          attributes: ["feature"],
-        },
-      ],
     });
 
     return res.status(200).json(shows);

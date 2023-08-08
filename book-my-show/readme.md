@@ -34,7 +34,7 @@ b. Features like 4K ATMOS, etc.
 ```
 GET /cities           (Get a list of all cities)
 GET /cities/:city/theatres (Get all theatres in a specific city)
-GET /cities/:city/theatres/:theatre/shows/:date (Get all shows on a specific date in a specific theatre of a specific city)
+GET /theatres/:theatre/:date (Get all shows on a specific date in a specific theatre with the given id).
 
 ```
 
@@ -114,6 +114,4 @@ Here's the data in the form of a table, representing the relationships and their
 | Shows           | Theatres        | Many-to-One           | Many shows belong to one theatre, but one theatre can have multiple shows.    |
 | Shows           | Show Features   | Many-to-Many          | One show can have multiple features, and one feature can be associated with multiple shows. |
 | Bookings        | Shows           | Many-to-One           | Many bookings can belong to one show, but one show can have multiple bookings. |
-
-This table summarizes the relationships between the entities in the BookMyShow scenario and provides descriptions for each type of relationship. It helps understand how different elements in the database are connected and related to each other.
 
