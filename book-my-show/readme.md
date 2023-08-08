@@ -73,6 +73,8 @@ GET /theatres/:theatre/:date (Get all shows on a specific date in a specific the
 
 4. **Table: Shows** (A theatre can have multiple movies running at different time slots, so one theatre can have multiple shows.)
 
+> Note: Show time and show date are two seperate columns in the data given below. This is just a combined representation for better understanding.
+
    | Show ID | Movie ID | Theatre ID | Show Time          | Show Language| Feature ID|
    |---------|----------|------------|--------------------|--------------|---- |
    | 401     | 301      | 201        | 2023-08-01 9AM     | 601          | 501 |
@@ -115,3 +117,5 @@ Here's the data in the form of a table, representing the relationships and their
 | Shows           | Show Features   | Many-to-Many          | One show can have multiple features, and one feature can be associated with multiple shows. |
 | Bookings        | Shows           | Many-to-One           | Many bookings can belong to one show, but one show can have multiple bookings. |
 
+## Redis
+If I've to cache the data in Redis then I'll cache the 7 days of complete shows data. This will help us fetch the requested data easily.
